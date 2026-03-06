@@ -6,7 +6,7 @@ class BankAccount:
 
     def withdraw(self):
         print("=== Withdrawing Balance ===")
-        secret = input("Inout your secret number:  ")
+        secret = input("Input your password:  ")
 
         if secret == self.__secret:
             amount = float(input("Input your amount:  "))
