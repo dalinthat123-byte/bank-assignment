@@ -23,6 +23,14 @@ class BankAccount:
     def check_balance(self):
         print(f"Hello {self.name}. Your remaining balance is {self._balance}")
 
+    def transfer(self, target, amount):
+        if amount > self._balance:
+            print("you don't have enough balance")
+            return
+        self.withdraw(amount)
+        target.deposit(amount)
+        print("transaction successfully")
+
 
 class SavingAccount(BankAccount):
     def calculate_interest(self):
@@ -122,22 +130,15 @@ Choose Menu
             print("Please login first")
             continue
 
-        target = input("Enter receiver account name: ")
+        target_name = input("Enter receiver account name: ")
 
-        if target not in accounts:
+        if target_name not in accounts:
             print("Account not found!")
             continue
 
         amount = float(input("Enter transfer amount: "))
-
-        if amount > current_user._balance:
-            print("Not enough balance!")
-            continue
-
-        current_user._balance -= amount
-        accounts[target]._balance += amount
-
-        print(f"Transfer successfully!")
+        current_user.transfer(accounts[target_name], amount)
+        
 
     elif choice == "7":
         current_user = None
