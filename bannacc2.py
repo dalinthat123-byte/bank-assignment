@@ -135,7 +135,7 @@ Choose Menu
             continue
 
         current_user._balance -= amount
-        accounts[receiver]._balance += amount
+        accounts[target]._balance += amount
 
         print(f"Transfer successfully!")
 
